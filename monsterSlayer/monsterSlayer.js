@@ -23,5 +23,27 @@ myEnnemieDiv.classList.add("myEnnemieDiv");
 const h1Ennemie = myEnnemieDiv.appendChild(document.createElement("h1"));
 h1Ennemie.innerHTML = 'MONSTER';
 
+const buttonsContainer = document.body.appendChild(document.createElement("div"));
+buttonsContainer.classList.add("buttonsContainer");
+const startButton = buttonsContainer.appendChild(document.createElement("button"));
+startButton.innerHTML = 'START NEW GAME';
 
+function startNewGame(event){
+    startButton.remove();
 
+    const attackButton = buttonsContainer.appendChild(document.createElement("button"));
+    attackButton.innerHTML = 'ATTACK';
+
+    const specialAttackButton = buttonsContainer.appendChild(document.createElement("button"));
+    specialAttackButton.innerHTML = 'SPECIAL ATTACK';
+
+    const healButton = buttonsContainer.appendChild(document.createElement("button"));
+    healButton.innerHTML = 'HEAL';
+
+    const giveUpButton = buttonsContainer.appendChild(document.createElement("button"));
+    giveUpButton.innerHTML = 'HEAL';
+
+    event.preventDefault();
+}
+
+startButton.addEventListener('click', startNewGame);
