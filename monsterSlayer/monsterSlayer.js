@@ -10,6 +10,9 @@
 
 // Quand un bouton est utilisé, le monstre nous fait des dégats en retour entre 5 et 10 pdv
 
+let hpBarCharacterSpan = 100;
+let hpBarEnnemieSpan = 100;
+
 const mainDiv = document.body.appendChild(document.createElement("div"));
 mainDiv.classList.add("main-content");
 
@@ -17,11 +20,17 @@ const myCharacterDiv = mainDiv.appendChild(document.createElement("div"));
 myCharacterDiv.classList.add("myCharacterDiv");
 const h1Character = myCharacterDiv.appendChild(document.createElement("h1"));
 h1Character.innerHTML = 'YOU';
+const hpBarCharacter = myCharacterDiv.appendChild(document.createElement("span"));
+hpBarCharacter.classList.add("hpBarCharacter");
+hpBarCharacter.innerHTML = hpBarCharacterSpan;
 
 const myEnnemieDiv = mainDiv.appendChild(document.createElement("div"));
 myEnnemieDiv.classList.add("myEnnemieDiv");
 const h1Ennemie = myEnnemieDiv.appendChild(document.createElement("h1"));
 h1Ennemie.innerHTML = 'MONSTER';
+const hpBarEnnemie = myEnnemieDiv.appendChild(document.createElement("span"));
+hpBarEnnemie.classList.add("hpBarEnnemie");
+hpBarEnnemie.innerHTML = hpBarEnnemieSpan;
 
 const buttonsContainer = document.body.appendChild(document.createElement("div"));
 buttonsContainer.classList.add("buttonsContainer");

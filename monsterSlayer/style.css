@@ -10,9 +10,12 @@
     padding-top: 3%;
     padding-bottom: 3%;
 }
-.myEnnemieDiv .myCharacterDiv {
+.myEnnemieDiv, .myCharacterDiv {
+    display: flex;
+    flex-direction: column;
     margin-left: 2%;
     margin-right: 2%;
+    text-align: center;
 }
 .buttonsContainer{
     border: #708090 5px solid;
@@ -27,4 +30,10 @@
     margin-right: auto;
     padding-top: 3%;
     padding-bottom: 3%;
+}
+.hpBarCharacter, .hpBarEnnemie{
+    display: inline-block;
+    width: 300px;
+    background-color: #50C878;
+    text-align: center;
 }
