@@ -41,7 +41,7 @@ function startNewGame(event){
     healButton.innerHTML = 'HEAL';
 
     const giveUpButton = buttonsContainer.appendChild(document.createElement("button"));
-    giveUpButton.innerHTML = 'HEAL';
+    giveUpButton.innerHTML = 'GIVE UP';
 
     event.preventDefault();
 }
