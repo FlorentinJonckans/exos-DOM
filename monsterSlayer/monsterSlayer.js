@@ -50,28 +50,40 @@ startButton.id = "startButton";
 startButton.innerHTML = 'START NEW GAME';
 startButton.addEventListener('click', startNewGame);
 
-// Création d'une div comportant l'historique des actions effectuées
-const actionsContainer = document.body.appendChild(document.createElement("div"));
-actionsContainer.classList.add("actionsContainer");
-const h2ActionEvents = actionsContainer.appendChild(document.createElement("h2"));
-h2ActionEvents.innerHTML = 'DERNIERES ACTIONS EFFECTUEES :';
-
 // Bouton qui commence la partie et génère les boutons comportant les actions de mon personnage
 function startNewGame(event){
+    // initialisation des informations
     document.getElementById("startButton").remove();
 
+    if ( document.getElementById("p") !== null ){
+        document.getElementById("actionsContainer").remove();
+    }
+
+    hpBarCharacterSpan = 100;
+    hpBarCharacter.innerHTML = hpBarCharacterSpan;
+
+    hpBarEnnemieSpan = 100;
+    hpBarEnnemie.innerHTML = hpBarEnnemieSpan;
+
+    document.getElementById("hpBarCharacter").style.width = "300px";
+    document.getElementById("hpBarEnnemie").style.width = "300px";
+
+    // création des boutons principaux
     const attackButton = buttonsContainer.appendChild(document.createElement("button"));
     attackButton.id = "attackButton";
+    attackButton.disabled = false;
     attackButton.innerHTML = 'ATTACK';
     attackButton.addEventListener('click', attackButtonEffect);
 
     const specialAttackButton = buttonsContainer.appendChild(document.createElement("button"));
     specialAttackButton.id = "specialAttackButton";
+    specialAttackButton.disabled = false;
     specialAttackButton.innerHTML = 'SPECIAL ATTACK';
     specialAttackButton.addEventListener('click', specialAttackButtonEffect);
 
     const healButton = buttonsContainer.appendChild(document.createElement("button"));
     healButton.id = "healButton";
+    healButton.disabled = false;
     healButton.innerHTML = 'HEAL';
     healButton.addEventListener('click', healButtonEffect);
 
@@ -79,6 +91,13 @@ function startNewGame(event){
     giveUpButton.id = "giveUpButton";
     giveUpButton.innerHTML = 'GIVE UP';
     giveUpButton.addEventListener('click', giveUpButtonEffect);
+
+    // Création d'une div comportant l'historique des actions effectuées
+    const actionsContainer = document.body.appendChild(document.createElement("div"));
+    actionsContainer.classList.add("actionsContainer");
+    actionsContainer.id = "actionsContainer";
+    const h2ActionEvents = actionsContainer.appendChild(document.createElement("h2"));
+    h2ActionEvents.innerHTML = 'DERNIERES ACTIONS EFFECTUEES :';
 
     event.preventDefault();
 }
@@ -100,10 +119,17 @@ function attackButtonEffect(event){
     // ajout de l'action dans l'historique des actions
     const newActionEventCharacter = actionsContainer.appendChild(document.createElement("p"));
     newActionEventCharacter.classList.add("newActionEventCharacter");
+    newActionEventCharacter.id = "p";
     newActionEventCharacter.innerHTML = 'PLAYER HITS MONSTER FOR ' + `${randomNumbCharacter}`;
+
+    // mon personnage a-t-il gagné ?
+    hasWon();
 
     // l'action de l'ennemie 
     attackMonster();
+
+    // mon personnage a-t-il perdu ?
+    hasLost();
 
     event.preventDefault();
 }
@@ -120,10 +146,17 @@ function specialAttackButtonEffect(event){
     // ajout de l'action dans l'historique des actions
     const newActionEventCharacter = actionsContainer.appendChild(document.createElement("p"));
     newActionEventCharacter.classList.add("newActionEventCharacter");
+    newActionEventCharacter.id = "p";
     newActionEventCharacter.innerHTML = 'PLAYER HITS MONSTER HARD FOR ' + `${randomNumbCharacter}`;
+
+    // mon personnage a-t-il gagné ?
+    hasWon();
 
     // l'action de l'ennemie 
     attackMonster();
+
+    // mon personnage a-t-il perdu ?
+    hasLost();
 
     event.preventDefault();
 }
@@ -144,6 +177,7 @@ function healButtonEffect(event){
             // ajout de l'action dans l'historique des actions
             const newActionEventCharacter = actionsContainer.appendChild(document.createElement("p"));
             newActionEventCharacter.classList.add("newActionEventCharacter");
+            newActionEventCharacter.id = "p";
             newActionEventCharacter.innerHTML = 'PLAYER HEALS HIMSELF FOR ' + `${fixedNumber}`;
 
             // l'action de l'ennemie 
@@ -158,6 +192,7 @@ function healButtonEffect(event){
             // ajout de l'action dans l'historique des actions
             const newActionEventCharacter = actionsContainer.appendChild(document.createElement("p"));
             newActionEventCharacter.classList.add("newActionEventCharacter");
+            newActionEventCharacter.id = "p";
             newActionEventCharacter.innerHTML = 'PLAYER HEALS HIMSELF FOR ' + `${fixedNumber}`;
 
             // l'action de l'ennemie 
@@ -197,5 +232,34 @@ function attackMonster(){
     // ajout de l'action dans l'historique des actions
     const newActionEventEnnemie = actionsContainer.appendChild(document.createElement("p"));
     newActionEventEnnemie.classList.add("newActionEventEnnemie");
+    newActionEventEnnemie.id = "p";
     newActionEventEnnemie.innerHTML = 'MONSTER HITS PLAYER FOR ' + `${randomNumbEnnemie}`;
+}
+
+function hasWon(){
+    console.log("je suis dans WIN : " + hpBarEnnemie.offsetWidth);
+    if ( hpBarEnnemieSpan <= 0 ){
+        document.getElementById("hpBarEnnemie").style.width = "0px";  
+        hpBarEnnemieSpan = 0;
+        hpBarEnnemie.innerHTML = hpBarEnnemieSpan;
+        alert("YOU WIN ! NEW GAME ?");
+
+        attackButton.disabled = true;
+        specialAttackButton.disabled = true;
+        healButton.disabled = true;
+    }
+}
+
+function hasLost(){
+    console.log("je suis dans LOSE : " + hpBarCharacter.offsetWidth);
+    if ( hpBarCharacterSpan <= 0 ){
+        document.getElementById("hpBarCharacter").style.width = "0px";  
+        hpBarCharacterSpan = 0;
+        hpBarCharacter.innerHTML = hpBarCharacterSpan;
+        alert("YOU LOST ! NEW GAME ?");
+
+        attackButton.disabled = true;
+        specialAttackButton.disabled = true;
+        healButton.disabled = true;
+    }
 }
