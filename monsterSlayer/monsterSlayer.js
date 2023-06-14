@@ -20,19 +20,25 @@ mainDiv.classList.add("main-content");
 // Création des éléments concernant mon personnage
 const myCharacterDiv = mainDiv.appendChild(document.createElement("div"));
 myCharacterDiv.classList.add("myCharacterDiv");
+// h1
 const h1Character = myCharacterDiv.appendChild(document.createElement("h1"));
 h1Character.innerHTML = 'YOU';
+// span
 const hpBarCharacter = myCharacterDiv.appendChild(document.createElement("span"));
 hpBarCharacter.classList.add("hpBarCharacter");
+hpBarCharacter.id = "hpBarCharacter";
 hpBarCharacter.innerHTML = hpBarCharacterSpan;
 
 // Création des éléments concernant mon ennemie
 const myEnnemieDiv = mainDiv.appendChild(document.createElement("div"));
 myEnnemieDiv.classList.add("myEnnemieDiv");
+// h1
 const h1Ennemie = myEnnemieDiv.appendChild(document.createElement("h1"));
 h1Ennemie.innerHTML = 'MONSTER';
+// span
 const hpBarEnnemie = myEnnemieDiv.appendChild(document.createElement("span"));
 hpBarEnnemie.classList.add("hpBarEnnemie");
+hpBarEnnemie.id = "hpBarEnnemie";
 hpBarEnnemie.innerHTML = hpBarEnnemieSpan;
 
 // Création d'une div comportant mes boutons d'actions
@@ -53,6 +59,7 @@ function startNewGame(event){
 
     const attackButton = buttonsContainer.appendChild(document.createElement("button"));
     attackButton.innerHTML = 'ATTACK';
+    attackButton.addEventListener('click', attackButtonEffect);
 
     const specialAttackButton = buttonsContainer.appendChild(document.createElement("button"));
     specialAttackButton.innerHTML = 'SPECIAL ATTACK';
@@ -68,17 +75,33 @@ function startNewGame(event){
 
 startButton.addEventListener('click', startNewGame);
 
-// function qui applique à mon ennemie une diminution de ses pdv
-function attackButtonEffect(event){
-    // mon action du tour
-
-        // ajout de l'action dans l'historique des actions
-
-    // l'action de l'ennemie
-    attackMonster();
+// fonction qui retourne un nombre random compris entre deux valeurs (valeurs comprises)
+function randomIntFromInterval(min, max) { // min and max included 
+    return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
-// function qui applique à mon ennemie une grande diminution de ses pdv
+// fonction qui applique à mon ennemie une diminution de ses pdv
+function attackButtonEffect(event){
+    // mon action du tour
+    let randomNumbCharacter = randomIntFromInterval(3,10);
+    let randomNumbEnnemie = randomIntFromInterval(5,10);
+
+    document.getElementById("hpBarEnnemie").style.width = (hpBarEnnemie.offsetWidth - randomNumbCharacter*3) + "px";  
+    hpBarEnnemieSpan -= randomNumbCharacter;
+    hpBarEnnemie.innerHTML = hpBarEnnemieSpan;
+    
+    // ajout de l'action dans l'historique des actions
+    const newActionEventCharacter = actionsContainer.appendChild(document.createElement("p"));
+    newActionEventCharacter.classList.add("newActionEventCharacter");
+    newActionEventCharacter.innerHTML = 'PLAYER HITS MONSTER HARD FOR ' + `${randomNumbCharacter}`;
+
+    // l'action de l'ennemie 
+    attackMonster();
+
+    event.preventDefault();
+}
+
+// fonction qui applique à mon ennemie une grande diminution de ses pdv
 function specialAttackButtonEffect(event){
     // mon action du tour
 
@@ -88,7 +111,7 @@ function specialAttackButtonEffect(event){
     attackMonster();
 }
 
-// function qui augmente mes pdv
+// fonction qui augmente mes pdv
 function healButtonEffect(event){
     // mon action du tour
 
@@ -98,12 +121,12 @@ function healButtonEffect(event){
     attackMonster();
 }
 
-// function qui fait abandonner mon personnage
+// fonction qui fait abandonner mon personnage
 function giveUpButtonEffect(event){
     
 }
 
-// function qui applique une attack à mon personnage à chaque fois que mon personnage effectue une action
+// fonction qui applique une attack à mon personnage à chaque fois que mon personnage effectue une action
 function attackMonster(){
     // l'action de l'ennemie
 

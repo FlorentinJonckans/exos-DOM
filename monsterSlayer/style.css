@@ -17,6 +17,7 @@
     margin-right: 2%;
     text-align: center;
     background-color: bisque;
+    width: 300px;
 }
 .buttonsContainer{
     border: #708090 5px solid;
@@ -42,6 +43,7 @@
     border: #708090 5px solid;
     border-radius: 5px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 75%;
@@ -51,4 +53,11 @@
     margin-right: auto;
     padding-top: 3%;
     padding-bottom: 3%;
+}
+.newActionEventCharacter{
+    background-color: lightgreen;
+    width: 80%;
+    text-align: center;
+    margin-top: 1%;
+    margin-bottom: 1%;
 }
