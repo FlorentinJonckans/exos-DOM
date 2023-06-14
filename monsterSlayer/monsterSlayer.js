@@ -41,6 +41,12 @@ buttonsContainer.classList.add("buttonsContainer");
 const startButton = buttonsContainer.appendChild(document.createElement("button"));
 startButton.innerHTML = 'START NEW GAME';
 
+// Création d'une div comportant l'historique des actions effectuées
+const actionsContainer = document.body.appendChild(document.createElement("div"));
+actionsContainer.classList.add("actionsContainer");
+const h2ActionEvents = actionsContainer.appendChild(document.createElement("h2"));
+h2ActionEvents.innerHTML = 'DERNIERES ACTIONS EFFECTUEES :';
+
 // Bouton qui commence la partie et génère les boutons comportant les actions de mon personnage
 function startNewGame(event){
     startButton.remove();
@@ -66,8 +72,9 @@ startButton.addEventListener('click', startNewGame);
 function attackButtonEffect(event){
     // mon action du tour
 
+        // ajout de l'action dans l'historique des actions
 
-    // l'action du monstre
+    // l'action de l'ennemie
     attackMonster();
 }
 
@@ -75,8 +82,9 @@ function attackButtonEffect(event){
 function specialAttackButtonEffect(event){
     // mon action du tour
 
+        // ajout de l'action dans l'historique des actions
 
-    // l'action du monstre
+    // l'action de l'ennemie
     attackMonster();
 }
 
@@ -84,8 +92,9 @@ function specialAttackButtonEffect(event){
 function healButtonEffect(event){
     // mon action du tour
 
+        // ajout de l'action dans l'historique des actions
 
-    // l'action du monstre
+    // l'action de l'ennemie
     attackMonster();
 }
 
@@ -96,5 +105,7 @@ function giveUpButtonEffect(event){
 
 // function qui applique une attack à mon personnage à chaque fois que mon personnage effectue une action
 function attackMonster(){
+    // l'action de l'ennemie
 
+    // ajout de l'action dans l'historique des actions
 }
