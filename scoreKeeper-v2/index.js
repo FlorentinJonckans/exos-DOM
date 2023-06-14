@@ -42,17 +42,17 @@ inputNumber.setAttribute("name", "quantity");
 
 const buttonPlayer1 = createElemWithClass("button", "form__button", form)
 buttonPlayer1.setAttribute("type", "button");
-buttonPlayer1.disabled = "true"
+buttonPlayer1.disabled = "true";
 buttonPlayer1.textContent = "Player 1";
 
 const buttonPlayer2 = createElemWithClass("button", "form__button", form)
 buttonPlayer2.setAttribute("type", "button");
-buttonPlayer2.disabled = "true"
+buttonPlayer2.disabled = "true";
 buttonPlayer2.textContent = "Player 2";
 
 const buttonReset = createElemWithClass("button", "form__button-reset", form)
 buttonReset.setAttribute("type", "button");
-buttonReset.disabled = "true"
+buttonReset.disabled = "true";
 buttonReset.textContent = "Reset";
 
 const buttons = document.getElementsByTagName("button");
