@@ -13,9 +13,11 @@
 let hpBarCharacterSpan = 100;
 let hpBarEnnemieSpan = 100;
 
+// Création de la div principale de mon body - nom de classe : main-content
 const mainDiv = document.body.appendChild(document.createElement("div"));
 mainDiv.classList.add("main-content");
 
+// Création des éléments concernant mon personnage
 const myCharacterDiv = mainDiv.appendChild(document.createElement("div"));
 myCharacterDiv.classList.add("myCharacterDiv");
 const h1Character = myCharacterDiv.appendChild(document.createElement("h1"));
@@ -24,6 +26,7 @@ const hpBarCharacter = myCharacterDiv.appendChild(document.createElement("span")
 hpBarCharacter.classList.add("hpBarCharacter");
 hpBarCharacter.innerHTML = hpBarCharacterSpan;
 
+// Création des éléments concernant mon ennemie
 const myEnnemieDiv = mainDiv.appendChild(document.createElement("div"));
 myEnnemieDiv.classList.add("myEnnemieDiv");
 const h1Ennemie = myEnnemieDiv.appendChild(document.createElement("h1"));
@@ -32,11 +35,13 @@ const hpBarEnnemie = myEnnemieDiv.appendChild(document.createElement("span"));
 hpBarEnnemie.classList.add("hpBarEnnemie");
 hpBarEnnemie.innerHTML = hpBarEnnemieSpan;
 
+// Création d'une div comportant mes boutons d'action
 const buttonsContainer = document.body.appendChild(document.createElement("div"));
 buttonsContainer.classList.add("buttonsContainer");
 const startButton = buttonsContainer.appendChild(document.createElement("button"));
 startButton.innerHTML = 'START NEW GAME';
 
+// Bouton qui commence la partie et génère les boutons comportant les action de mon personnage
 function startNewGame(event){
     startButton.remove();
 
@@ -56,3 +61,40 @@ function startNewGame(event){
 }
 
 startButton.addEventListener('click', startNewGame);
+
+// function qui applique a mon ennemie une diminution de ses pdv
+function attackButtonEffect(event){
+    // mon action du tour
+
+
+    // l'action du monstre
+    attackMonster();
+}
+
+// function qui applique a mon ennemie une grande diminution de ses pdv
+function specialAttackButtonEffect(event){
+    // mon action du tour
+
+
+    // l'action du monstre
+    attackMonster();
+}
+
+// function qui augmente mes pdv
+function healButtonEffect(event){
+    // mon action du tour
+
+
+    // l'action du monstre
+    attackMonster();
+}
+
+// function qui fait abandonner mon personnage
+function giveUpButtonEffect(event){
+    
+}
+
+// function qui applique une attack à mon personnage à chaque fois que mon personnage effectue une action
+function attackMonster(){
+
+}
