@@ -128,24 +128,44 @@ function specialAttackButtonEffect(event){
     event.preventDefault();
 }
 
+console.log(hpBarCharacter.offsetWidth)
+
 // fonction qui augmente mes pdv
 function healButtonEffect(event){
     // l'action de l'ennemie
     let fixedNumber = 10;
 
-    document.getElementById("hpBarCharacter").style.width = (hpBarCharacter.offsetWidth + fixedNumber*3) + "px";  
-    hpBarCharacterSpan += fixedNumber;
-    hpBarCharacter.innerHTML = hpBarCharacterSpan;
+    if ( hpBarCharacter.offsetWidth < 300 ){
+        if ( (hpBarCharacter.offsetWidth + fixedNumber*3) < 300 ){
+            document.getElementById("hpBarCharacter").style.width = (hpBarCharacter.offsetWidth + fixedNumber*3) + "px";  
+            hpBarCharacterSpan += fixedNumber;
+            hpBarCharacter.innerHTML = hpBarCharacterSpan;
 
-    // ajout de l'action dans l'historique des actions
-    const newActionEventCharacter = actionsContainer.appendChild(document.createElement("p"));
-    newActionEventCharacter.classList.add("newActionEventCharacter");
-    newActionEventCharacter.innerHTML = 'PLAYER HEALS HIMSELF FOR ' + `${fixedNumber}`;
+            // ajout de l'action dans l'historique des actions
+            const newActionEventCharacter = actionsContainer.appendChild(document.createElement("p"));
+            newActionEventCharacter.classList.add("newActionEventCharacter");
+            newActionEventCharacter.innerHTML = 'PLAYER HEALS HIMSELF FOR ' + `${fixedNumber}`;
 
-    // l'action de l'ennemie 
-    attackMonster();
+            // l'action de l'ennemie 
+            attackMonster();
 
-    event.preventDefault();
+            event.preventDefault();
+        } else if ( (hpBarCharacter.offsetWidth + fixedNumber*3) >=  300 ){
+            document.getElementById("hpBarCharacter").style.width = "300px";  
+            hpBarCharacterSpan = 100;
+            hpBarCharacter.innerHTML = hpBarCharacterSpan;
+
+            // ajout de l'action dans l'historique des actions
+            const newActionEventCharacter = actionsContainer.appendChild(document.createElement("p"));
+            newActionEventCharacter.classList.add("newActionEventCharacter");
+            newActionEventCharacter.innerHTML = 'PLAYER HEALS HIMSELF FOR ' + `${fixedNumber}`;
+
+            // l'action de l'ennemie 
+            attackMonster();
+
+            event.preventDefault();
+        }
+    }
 }
 
 // fonction qui fait abandonner mon personnage
