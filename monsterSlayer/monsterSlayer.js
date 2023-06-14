@@ -44,8 +44,11 @@ hpBarEnnemie.innerHTML = hpBarEnnemieSpan;
 // Création d'une div comportant mes boutons d'actions
 const buttonsContainer = document.body.appendChild(document.createElement("div"));
 buttonsContainer.classList.add("buttonsContainer");
+// bouton 'START NEW GAME'
 const startButton = buttonsContainer.appendChild(document.createElement("button"));
+startButton.id = "startButton";
 startButton.innerHTML = 'START NEW GAME';
+startButton.addEventListener('click', startNewGame);
 
 // Création d'une div comportant l'historique des actions effectuées
 const actionsContainer = document.body.appendChild(document.createElement("div"));
@@ -55,27 +58,30 @@ h2ActionEvents.innerHTML = 'DERNIERES ACTIONS EFFECTUEES :';
 
 // Bouton qui commence la partie et génère les boutons comportant les actions de mon personnage
 function startNewGame(event){
-    startButton.remove();
+    document.getElementById("startButton").remove();
 
     const attackButton = buttonsContainer.appendChild(document.createElement("button"));
+    attackButton.id = "attackButton";
     attackButton.innerHTML = 'ATTACK';
     attackButton.addEventListener('click', attackButtonEffect);
 
     const specialAttackButton = buttonsContainer.appendChild(document.createElement("button"));
+    specialAttackButton.id = "specialAttackButton";
     specialAttackButton.innerHTML = 'SPECIAL ATTACK';
     specialAttackButton.addEventListener('click', specialAttackButtonEffect);
 
     const healButton = buttonsContainer.appendChild(document.createElement("button"));
+    healButton.id = "healButton";
     healButton.innerHTML = 'HEAL';
     healButton.addEventListener('click', healButtonEffect);
 
     const giveUpButton = buttonsContainer.appendChild(document.createElement("button"));
+    giveUpButton.id = "giveUpButton";
     giveUpButton.innerHTML = 'GIVE UP';
+    giveUpButton.addEventListener('click', giveUpButtonEffect);
 
     event.preventDefault();
 }
-
-startButton.addEventListener('click', startNewGame);
 
 // fonction qui retourne un nombre random compris entre deux valeurs (valeurs comprises)
 function randomIntFromInterval(min, max) { // min and max included 
@@ -144,7 +150,19 @@ function healButtonEffect(event){
 
 // fonction qui fait abandonner mon personnage
 function giveUpButtonEffect(event){
-    
+    // retire dans la div tous les boutons existants
+    document.getElementById("attackButton").remove();
+    document.getElementById("specialAttackButton").remove();
+    document.getElementById("healButton").remove();
+    document.getElementById("giveUpButton").remove();
+
+    // rajoute dans la div le bouton 'START NEW GAME'
+    const startButton = buttonsContainer.appendChild(document.createElement("button"));
+    startButton.id = "startButton";
+    startButton.innerHTML = 'START NEW GAME';
+    startButton.addEventListener('click', startNewGame);
+
+    event.preventDefault();
 }
 
 // fonction qui applique une attack à mon personnage à chaque fois que mon personnage effectue une action
