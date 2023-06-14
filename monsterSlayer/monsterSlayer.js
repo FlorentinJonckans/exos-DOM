@@ -122,14 +122,13 @@ function attackButtonEffect(event){
     newActionEventCharacter.id = "p";
     newActionEventCharacter.innerHTML = 'PLAYER HITS MONSTER FOR ' + `${randomNumbCharacter}`;
 
-    // mon personnage a-t-il gagné ?
-    hasWon();
+    if ( !hasWon() ){
+        // l'action de l'ennemie 
+        attackMonster();
 
-    // l'action de l'ennemie 
-    attackMonster();
-
-    // mon personnage a-t-il perdu ?
-    hasLost();
+        // mon personnage a-t-il perdu ?
+        hasLost();
+    }
 
     event.preventDefault();
 }
@@ -149,19 +148,16 @@ function specialAttackButtonEffect(event){
     newActionEventCharacter.id = "p";
     newActionEventCharacter.innerHTML = 'PLAYER HITS MONSTER HARD FOR ' + `${randomNumbCharacter}`;
 
-    // mon personnage a-t-il gagné ?
-    hasWon();
+    if ( !hasWon() ){
+        // l'action de l'ennemie 
+        attackMonster();
 
-    // l'action de l'ennemie 
-    attackMonster();
-
-    // mon personnage a-t-il perdu ?
-    hasLost();
+        // mon personnage a-t-il perdu ?
+        hasLost();
+    }
 
     event.preventDefault();
 }
-
-console.log(hpBarCharacter.offsetWidth)
 
 // fonction qui augmente mes pdv
 function healButtonEffect(event){
@@ -237,7 +233,6 @@ function attackMonster(){
 }
 
 function hasWon(){
-    console.log("je suis dans WIN : " + hpBarEnnemie.offsetWidth);
     if ( hpBarEnnemieSpan <= 0 ){
         document.getElementById("hpBarEnnemie").style.width = "0px";  
         hpBarEnnemieSpan = 0;
@@ -247,11 +242,12 @@ function hasWon(){
         attackButton.disabled = true;
         specialAttackButton.disabled = true;
         healButton.disabled = true;
+        return true;
     }
+    return false;
 }
 
 function hasLost(){
-    console.log("je suis dans LOSE : " + hpBarCharacter.offsetWidth);
     if ( hpBarCharacterSpan <= 0 ){
         document.getElementById("hpBarCharacter").style.width = "0px";  
         hpBarCharacterSpan = 0;
@@ -261,5 +257,5 @@ function hasLost(){
         attackButton.disabled = true;
         specialAttackButton.disabled = true;
         healButton.disabled = true;
-    }
+    } 
 }
