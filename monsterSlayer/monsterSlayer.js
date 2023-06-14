@@ -84,7 +84,6 @@ function randomIntFromInterval(min, max) { // min and max included
 function attackButtonEffect(event){
     // mon action du tour
     let randomNumbCharacter = randomIntFromInterval(3,10);
-    let randomNumbEnnemie = randomIntFromInterval(5,10);
 
     document.getElementById("hpBarEnnemie").style.width = (hpBarEnnemie.offsetWidth - randomNumbCharacter*3) + "px";  
     hpBarEnnemieSpan -= randomNumbCharacter;
@@ -93,7 +92,7 @@ function attackButtonEffect(event){
     // ajout de l'action dans l'historique des actions
     const newActionEventCharacter = actionsContainer.appendChild(document.createElement("p"));
     newActionEventCharacter.classList.add("newActionEventCharacter");
-    newActionEventCharacter.innerHTML = 'PLAYER HITS MONSTER HARD FOR ' + `${randomNumbCharacter}`;
+    newActionEventCharacter.innerHTML = 'PLAYER HITS MONSTER FOR ' + `${randomNumbCharacter}`;
 
     // l'action de l'ennemie 
     attackMonster();
@@ -129,6 +128,14 @@ function giveUpButtonEffect(event){
 // fonction qui applique une attack à mon personnage à chaque fois que mon personnage effectue une action
 function attackMonster(){
     // l'action de l'ennemie
+    let randomNumbEnnemie = randomIntFromInterval(5,10);
+
+    document.getElementById("hpBarCharacter").style.width = (hpBarCharacter.offsetWidth - randomNumbEnnemie*3) + "px";  
+    hpBarCharacterSpan -= randomNumbEnnemie;
+    hpBarCharacter.innerHTML = hpBarCharacterSpan;
 
     // ajout de l'action dans l'historique des actions
+    const newActionEventEnnemie = actionsContainer.appendChild(document.createElement("p"));
+    newActionEventEnnemie.classList.add("newActionEventEnnemie");
+    newActionEventEnnemie.innerHTML = 'MONSTER HITS PLAYER FOR ' + `${randomNumbEnnemie}`;
 }
