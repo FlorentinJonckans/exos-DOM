@@ -63,6 +63,7 @@ function startNewGame(event){
 
     const specialAttackButton = buttonsContainer.appendChild(document.createElement("button"));
     specialAttackButton.innerHTML = 'SPECIAL ATTACK';
+    specialAttackButton.addEventListener('click', specialAttackButtonEffect);
 
     const healButton = buttonsContainer.appendChild(document.createElement("button"));
     healButton.innerHTML = 'HEAL';
@@ -103,11 +104,21 @@ function attackButtonEffect(event){
 // fonction qui applique à mon ennemie une grande diminution de ses pdv
 function specialAttackButtonEffect(event){
     // mon action du tour
+    let randomNumbCharacter = randomIntFromInterval(10,20);
 
-        // ajout de l'action dans l'historique des actions
+    document.getElementById("hpBarEnnemie").style.width = (hpBarEnnemie.offsetWidth - randomNumbCharacter*3) + "px";  
+    hpBarEnnemieSpan -= randomNumbCharacter;
+    hpBarEnnemie.innerHTML = hpBarEnnemieSpan;
+    
+    // ajout de l'action dans l'historique des actions
+    const newActionEventCharacter = actionsContainer.appendChild(document.createElement("p"));
+    newActionEventCharacter.classList.add("newActionEventCharacter");
+    newActionEventCharacter.innerHTML = 'PLAYER HITS MONSTER HARD FOR ' + `${randomNumbCharacter}`;
 
-    // l'action de l'ennemie
+    // l'action de l'ennemie 
     attackMonster();
+
+    event.preventDefault();
 }
 
 // fonction qui augmente mes pdv
