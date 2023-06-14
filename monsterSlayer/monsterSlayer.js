@@ -35,13 +35,13 @@ const hpBarEnnemie = myEnnemieDiv.appendChild(document.createElement("span"));
 hpBarEnnemie.classList.add("hpBarEnnemie");
 hpBarEnnemie.innerHTML = hpBarEnnemieSpan;
 
-// Création d'une div comportant mes boutons d'action
+// Création d'une div comportant mes boutons d'actions
 const buttonsContainer = document.body.appendChild(document.createElement("div"));
 buttonsContainer.classList.add("buttonsContainer");
 const startButton = buttonsContainer.appendChild(document.createElement("button"));
 startButton.innerHTML = 'START NEW GAME';
 
-// Bouton qui commence la partie et génère les boutons comportant les action de mon personnage
+// Bouton qui commence la partie et génère les boutons comportant les actions de mon personnage
 function startNewGame(event){
     startButton.remove();
 
@@ -62,7 +62,7 @@ function startNewGame(event){
 
 startButton.addEventListener('click', startNewGame);
 
-// function qui applique a mon ennemie une diminution de ses pdv
+// function qui applique à mon ennemie une diminution de ses pdv
 function attackButtonEffect(event){
     // mon action du tour
 
@@ -71,7 +71,7 @@ function attackButtonEffect(event){
     attackMonster();
 }
 
-// function qui applique a mon ennemie une grande diminution de ses pdv
+// function qui applique à mon ennemie une grande diminution de ses pdv
 function specialAttackButtonEffect(event){
     // mon action du tour
 
