@@ -55,10 +55,6 @@ function startNewGame(event){
     // initialisation des informations
     document.getElementById("startButton").remove();
 
-    if ( document.getElementById("p") !== null ){
-        document.getElementById("actionsContainer").remove();
-    }
-
     hpBarCharacterSpan = 100;
     hpBarCharacter.innerHTML = hpBarCharacterSpan;
 
@@ -119,7 +115,7 @@ function attackButtonEffect(event){
     // ajout de l'action dans l'historique des actions
     const newActionEventCharacter = actionsContainer.appendChild(document.createElement("p"));
     newActionEventCharacter.classList.add("newActionEventCharacter");
-    newActionEventCharacter.id = "p";
+    newActionEventCharacter.id = "paragraphInActionsContainer";
     newActionEventCharacter.innerHTML = 'PLAYER HITS MONSTER FOR ' + `${randomNumbCharacter}`;
 
     if ( !hasWon() ){
@@ -145,7 +141,7 @@ function specialAttackButtonEffect(event){
     // ajout de l'action dans l'historique des actions
     const newActionEventCharacter = actionsContainer.appendChild(document.createElement("p"));
     newActionEventCharacter.classList.add("newActionEventCharacter");
-    newActionEventCharacter.id = "p";
+    newActionEventCharacter.id = "paragraphInActionsContainer";
     newActionEventCharacter.innerHTML = 'PLAYER HITS MONSTER HARD FOR ' + `${randomNumbCharacter}`;
 
     if ( !hasWon() ){
@@ -173,7 +169,7 @@ function healButtonEffect(event){
             // ajout de l'action dans l'historique des actions
             const newActionEventCharacter = actionsContainer.appendChild(document.createElement("p"));
             newActionEventCharacter.classList.add("newActionEventCharacter");
-            newActionEventCharacter.id = "p";
+            newActionEventCharacter.id = "paragraphInActionsContainer";
             newActionEventCharacter.innerHTML = 'PLAYER HEALS HIMSELF FOR ' + `${fixedNumber}`;
 
             // l'action de l'ennemie 
@@ -188,7 +184,7 @@ function healButtonEffect(event){
             // ajout de l'action dans l'historique des actions
             const newActionEventCharacter = actionsContainer.appendChild(document.createElement("p"));
             newActionEventCharacter.classList.add("newActionEventCharacter");
-            newActionEventCharacter.id = "p";
+            newActionEventCharacter.id = "paragraphInActionsContainer";
             newActionEventCharacter.innerHTML = 'PLAYER HEALS HIMSELF FOR ' + `${fixedNumber}`;
 
             // l'action de l'ennemie 
@@ -213,6 +209,10 @@ function giveUpButtonEffect(event){
     startButton.innerHTML = 'START NEW GAME';
     startButton.addEventListener('click', startNewGame);
 
+    if ( document.getElementById("actionsContainer") !== null ){
+        document.getElementById("actionsContainer").remove();
+    }
+
     event.preventDefault();
 }
 
@@ -228,7 +228,7 @@ function attackMonster(){
     // ajout de l'action dans l'historique des actions
     const newActionEventEnnemie = actionsContainer.appendChild(document.createElement("p"));
     newActionEventEnnemie.classList.add("newActionEventEnnemie");
-    newActionEventEnnemie.id = "p";
+    newActionEventEnnemie.id = "paragraphInActionsContainer";
     newActionEventEnnemie.innerHTML = 'MONSTER HITS PLAYER FOR ' + `${randomNumbEnnemie}`;
 }
 
