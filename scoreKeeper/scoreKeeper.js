@@ -20,6 +20,7 @@ label.innerHTML = `Playing to : `;
 
 // Création d'une balise input - enfant de ma div principale de mon body 
 const input = mainDiv.appendChild(document.createElement("input"));
+input.min = "0";
 input.type = 'number';
 input.id = 'input';
 input.name = 'name';
