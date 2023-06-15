@@ -212,6 +212,8 @@ function giveUpButtonEffect(event){
     document.getElementById("healButton").remove();
     document.getElementById("giveUpButton").remove();
 
+    alert("YOU GAVE UP ! NEW GAME ?");
+
     // rajoute dans la div le bouton 'START NEW GAME'
     const startButton = buttonsContainer.appendChild(document.createElement("button"));
     startButton.id = "startButton";
