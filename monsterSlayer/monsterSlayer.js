@@ -35,6 +35,11 @@ myEnnemieDiv.classList.add("myEnnemieDiv");
 // h1
 const h1Ennemie = myEnnemieDiv.appendChild(document.createElement("h1"));
 h1Ennemie.innerHTML = 'MONSTER';
+// img
+const imgEnnemie = myEnnemieDiv.appendChild(document.createElement("img"));
+imgEnnemie.classList.add("imgEnnemie");
+imgEnnemie.src = 'img/monster.png';
+
 // span
 const hpBarEnnemie = myEnnemieDiv.appendChild(document.createElement("span"));
 hpBarEnnemie.classList.add("hpBarEnnemie");

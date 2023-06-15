@@ -19,6 +19,12 @@
     background-color: bisque;
     width: 300px;
 }
+.imgEnnemie {
+    height : 320px;
+    width : 180px;
+    margin: auto;
+    margin-bottom: 20px;
+}
 .buttonsContainer{
     border: #708090 5px solid;
     border-radius: 5px;
