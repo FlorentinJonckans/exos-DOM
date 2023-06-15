@@ -15,11 +15,13 @@
     flex-direction: column;
     margin-left: 4%;
     margin-right: 4%;
-    text-align: center;
     background-color: bisque;
     border: #708090 5px solid;
     border-radius: 5px;
     width: 300px;
+}
+.myCharacterDiv h1, .myEnnemieDiv h1 {
+    text-align: center;
 }
 .imgCharacter {
     height : 320px;
@@ -37,10 +39,6 @@
     height : 300px;
     width : 100px;
 }
-
-/* #hpBarCharacter, #hpBarEnnemie{
-    transition: all 0.5s ease-out;
-} */
 .buttonsContainer{
     border: #708090 5px solid;
     border-radius: 50px;
@@ -83,12 +81,20 @@
 #attackButton:disabled, #specialAttackButton:disabled, #healButton:disabled {
     opacity: 0.6;
 }
+/**             HP BAR             **/
+.containerCharacterHpBar, .containerEnnemieHpBar{
+    background-color: white;
+}
 .hpBarCharacter, .hpBarEnnemie{
     display: inline-block;
     width: 300px;
     background-color: #50C878;
     text-align: center;
 }
+#hpBarCharacter, #hpBarEnnemie{
+    transition: all 0.5s ease-out;
+}
+/** ------------------------------ **/
 .actionsContainer{
     border: #708090 5px solid;
     border-radius: 5px;

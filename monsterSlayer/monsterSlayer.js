@@ -27,8 +27,11 @@ h1Character.innerHTML = 'YOU';
 const imgCharacter = myCharacterDiv.appendChild(document.createElement("img"));
 imgCharacter.classList.add("imgCharacter");
 imgCharacter.src = 'img/character.png';
-// span
-const hpBarCharacter = myCharacterDiv.appendChild(document.createElement("span"));
+// div container
+const containerCharacterHpBar = myCharacterDiv.appendChild(document.createElement("div"));
+containerCharacterHpBar.classList.add("containerCharacterHpBar");
+// div container > span
+const hpBarCharacter = containerCharacterHpBar.appendChild(document.createElement("span"));
 hpBarCharacter.classList.add("hpBarCharacter");
 hpBarCharacter.id = "hpBarCharacter";
 hpBarCharacter.innerHTML = hpBarCharacterSpan;
@@ -48,9 +51,11 @@ h1Ennemie.innerHTML = 'MONSTER';
 const imgEnnemie = myEnnemieDiv.appendChild(document.createElement("img"));
 imgEnnemie.classList.add("imgEnnemie");
 imgEnnemie.src = 'img/monster.png';
-
-// span
-const hpBarEnnemie = myEnnemieDiv.appendChild(document.createElement("span"));
+// div container
+const containerEnnemieHpBar = myEnnemieDiv.appendChild(document.createElement("div"));
+containerEnnemieHpBar.classList.add("containerEnnemieHpBar");
+// div container > span
+const hpBarEnnemie = containerEnnemieHpBar.appendChild(document.createElement("span"));
 hpBarEnnemie.classList.add("hpBarEnnemie");
 hpBarEnnemie.id = "hpBarEnnemie";
 hpBarEnnemie.innerHTML = hpBarEnnemieSpan;
@@ -122,7 +127,7 @@ function attackButtonEffect(event){
     // mon action du tour
     let randomNumbCharacter = randomIntFromInterval(3,10);
 
-    document.getElementById("hpBarEnnemie").style.width = (hpBarEnnemie.offsetWidth - randomNumbCharacter*3) + "px";  
+    document.getElementById("hpBarEnnemie").style.width = (hpBarEnnemieSpan*3 - randomNumbCharacter*3) + "px";  
     hpBarEnnemieSpan -= randomNumbCharacter;
     hpBarEnnemie.innerHTML = hpBarEnnemieSpan;
     
@@ -148,7 +153,7 @@ function specialAttackButtonEffect(event){
     // mon action du tour
     let randomNumbCharacter = randomIntFromInterval(10,20);
 
-    document.getElementById("hpBarEnnemie").style.width = (hpBarEnnemie.offsetWidth - randomNumbCharacter*3) + "px";  
+    document.getElementById("hpBarEnnemie").style.width = (hpBarEnnemieSpan*3 - randomNumbCharacter*3) + "px";  
     hpBarEnnemieSpan -= randomNumbCharacter;
     hpBarEnnemie.innerHTML = hpBarEnnemieSpan;
     
@@ -176,7 +181,8 @@ function healButtonEffect(event){
 
     if ( hpBarCharacter.offsetWidth <= 300 ){
         if ( (hpBarCharacter.offsetWidth + fixedNumber*3) < 300 ){
-            document.getElementById("hpBarCharacter").style.width = (hpBarCharacter.offsetWidth + fixedNumber*3) + "px";  
+            document.getElementById("hpBarCharacter").style.width = (hpBarCharacterSpan*3 + fixedNumber*3) + "px"; 
+            console.log(document.getElementById("hpBarCharacter").style.width); 
             hpBarCharacterSpan += fixedNumber;
             hpBarCharacter.innerHTML = hpBarCharacterSpan;
 
@@ -235,7 +241,8 @@ function attackMonster(){
     // l'action de l'ennemie
     let randomNumbEnnemie = randomIntFromInterval(5,10);
 
-    document.getElementById("hpBarCharacter").style.width = (hpBarCharacter.offsetWidth - randomNumbEnnemie*3) + "px";  
+    document.getElementById("hpBarCharacter").style.width = (hpBarCharacterSpan*3 - randomNumbEnnemie*3) + "px";  
+    console.log(document.getElementById("hpBarCharacter").style.width);
     hpBarCharacterSpan -= randomNumbEnnemie;
     hpBarCharacter.innerHTML = hpBarCharacterSpan;
 
