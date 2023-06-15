@@ -10,9 +10,20 @@ const data = [
     "https://img.freepik.com/photos-gratuite/statue-liberte-beau-ciel-nuageux_181624-1112.jpg?w=1380&t=st=1686570500~exp=1686571100~hmac=dee96f4d73783c5aadb63f4b384c68f6b5b2cbc313fc05c2eef22a69262f46fe"
 ];
 
+let currentPicture = 0;
+
+const divH1 =  document.createElement("div");
+divH1.setAttribute("class", "divH1");
+document.body.appendChild(divH1);
+
 const container =  document.createElement("div");
 container.setAttribute("class", "container");
 document.body.appendChild(container);
+
+const h1Picture = document.createElement("h1");
+h1Picture.setAttribute('class', 'h1Picture');
+h1Picture.innerHTML = `Image 0`;
+divH1.appendChild(h1Picture);
 
 const picture = document.createElement("img");
 picture.setAttribute('class', 'photo');
@@ -28,20 +39,21 @@ buttonBefore.setAttribute("class", "button-left");
 container.appendChild(buttonBefore);
 
 
-let currentPicture = 0;
-
 function slidePictures(direction) {
     // currentPicture => sert d'index
     currentPicture = currentPicture + direction;
     // si index < 0, reviens à la fin du tableau
     if (currentPicture < 0) {
         currentPicture = data.length - 1;
+        h1Picture.innerHTML = `Image ${currentPicture}`;
     }
     // si index > 0, continue d'avancer dans le tableau
     if (currentPicture > data.length - 1) {
         currentPicture = 0;
+        h1Picture.innerHTML = `Image ${currentPicture}`;
     }
     picture.src = data[currentPicture];
+    h1Picture.innerHTML = `Image ${currentPicture}`;
 }
 
 buttonAfter.addEventListener("click", () => slidePictures(1));

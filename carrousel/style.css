@@ -1,3 +1,7 @@
+.divH1{
+    margin: auto;
+    text-align: center;
+}
 .container {
     width: 350px;
     height: 200px;
@@ -6,6 +10,9 @@
     justify-content: center;
 
     margin: 0 auto;
+}
+.h1Picture {
+    color: rgb(180, 120, 95);
 }
 .photo {
     width: 90%;
@@ -20,12 +27,12 @@
     cursor: pointer;
 }
 .button-left {      
-    border-right:10px solid blue;
+    border-right:10px solid rgb(180, 120, 95);
     top: 50%;
     left: 0;
 }
 .button-right {
-    border-left: 10px solid blue;
+    border-left: 10px solid rgb(180, 120, 95);
     top: 50%;
     right: 0;
 }
