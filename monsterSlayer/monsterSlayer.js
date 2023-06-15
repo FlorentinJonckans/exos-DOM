@@ -33,6 +33,11 @@ hpBarCharacter.classList.add("hpBarCharacter");
 hpBarCharacter.id = "hpBarCharacter";
 hpBarCharacter.innerHTML = hpBarCharacterSpan;
 
+// Création d'une image versus
+const imgVS = mainDiv.appendChild(document.createElement("img"));
+imgVS.classList.add("imgVS");
+imgVS.src = 'img/vs.png';
+
 // Création des éléments concernant mon ennemie
 const myEnnemieDiv = mainDiv.appendChild(document.createElement("div"));
 myEnnemieDiv.classList.add("myEnnemieDiv");
@@ -211,8 +216,6 @@ function giveUpButtonEffect(event){
     document.getElementById("specialAttackButton").remove();
     document.getElementById("healButton").remove();
     document.getElementById("giveUpButton").remove();
-
-    alert("YOU GAVE UP ! NEW GAME ?");
 
     // rajoute dans la div le bouton 'START NEW GAME'
     const startButton = buttonsContainer.appendChild(document.createElement("button"));

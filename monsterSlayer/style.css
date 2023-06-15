@@ -31,6 +31,11 @@
     margin: auto;
     margin-bottom: 20px;
 }
+.imgVS {
+    height : 300px;
+    width : 100px;
+}
+
 /* #hpBarCharacter, #hpBarEnnemie{
     transition: all 0.5s ease-out;
 } */
