@@ -73,6 +73,9 @@
 #giveUpButton {
     background-color: lightgrey;
 }
+#attackButton:disabled, #specialAttackButton:disabled, #healButton:disabled {
+    opacity: 0.6;
+}
 .hpBarCharacter, .hpBarEnnemie{
     display: inline-block;
     width: 300px;
