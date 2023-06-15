@@ -254,7 +254,7 @@ function hasWon(){
         alert("YOU WIN ! NEW GAME ?");
 
         giveUpButton.innerHTML = 'RESET';
-
+        
         attackButton.disabled = true;
         specialAttackButton.disabled = true;
         healButton.disabled = true;
