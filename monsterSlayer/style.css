@@ -33,6 +33,29 @@
     padding-top: 3%;
     padding-bottom: 3%;
 }
+#startButton, #attackButton, #specialAttackButton, #healButton, #giveUpButton {
+    display: inline-block;
+    padding: 10px;
+    width: 160px;
+    color: #000;
+    text-align: center;
+    border-radius: 20px;
+}
+#startButton {
+    background-color: lightgreen;
+}
+#attackButton {
+    background-color: lightpink;
+}
+#specialAttackButton {
+    background-color: orange;
+}
+#healButton {
+    background-color: lightgreen;
+}
+#giveUpButton {
+    background-color: lightgrey;
+}
 .hpBarCharacter, .hpBarEnnemie{
     display: inline-block;
     width: 300px;
