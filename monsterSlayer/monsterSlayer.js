@@ -160,7 +160,7 @@ function healButtonEffect(event){
     // l'action de l'ennemie
     let fixedNumber = 10;
 
-    if ( hpBarCharacter.offsetWidth < 300 ){
+    if ( hpBarCharacter.offsetWidth <= 300 ){
         if ( (hpBarCharacter.offsetWidth + fixedNumber*3) < 300 ){
             document.getElementById("hpBarCharacter").style.width = (hpBarCharacter.offsetWidth + fixedNumber*3) + "px";  
             hpBarCharacterSpan += fixedNumber;
