@@ -23,6 +23,10 @@ myCharacterDiv.classList.add("myCharacterDiv");
 // h1
 const h1Character = myCharacterDiv.appendChild(document.createElement("h1"));
 h1Character.innerHTML = 'YOU';
+// img
+const imgCharacter = myCharacterDiv.appendChild(document.createElement("img"));
+imgCharacter.classList.add("imgCharacter");
+imgCharacter.src = 'img/character.png';
 // span
 const hpBarCharacter = myCharacterDiv.appendChild(document.createElement("span"));
 hpBarCharacter.classList.add("hpBarCharacter");
