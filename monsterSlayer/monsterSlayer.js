@@ -248,6 +248,8 @@ function hasWon(){
         hpBarEnnemie.innerHTML = hpBarEnnemieSpan;
         alert("YOU WIN ! NEW GAME ?");
 
+        giveUpButton.innerHTML = 'RESET';
+
         attackButton.disabled = true;
         specialAttackButton.disabled = true;
         healButton.disabled = true;
@@ -262,6 +264,8 @@ function hasLost(){
         hpBarCharacterSpan = 0;
         hpBarCharacter.innerHTML = hpBarCharacterSpan;
         alert("YOU LOST ! NEW GAME ?");
+
+        giveUpButton.innerHTML = 'RESET';
 
         attackButton.disabled = true;
         specialAttackButton.disabled = true;
