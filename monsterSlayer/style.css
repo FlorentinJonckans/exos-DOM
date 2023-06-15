@@ -33,7 +33,7 @@
 }
 .buttonsContainer{
     border: #708090 5px solid;
-    border-radius: 5px;
+    border-radius: 50px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -52,6 +52,8 @@
     color: #000;
     text-align: center;
     border-radius: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 #startButton {
     background-color: lightgreen;
